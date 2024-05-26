@@ -7,6 +7,11 @@ jobs:
     name: First job
     runs-on: ubuntu-latest
     steps:
+      # Note step one is actually redundant, as only the "run" attribute is used in this example (not an Action)
+      # With the "run" attribute, we execute a single command that's native to the runners on the runner's CLI
+      # We actually only need the "uses" attribute when we want to pull in an Action
+      - name: Step one
+        uses: actions/checkout@v4
       - name: Step two
         run: env | sort
   job2:
@@ -14,6 +19,11 @@ jobs:
     needs: job1
     runs-on: windows-latest
     steps:
+      # Note step one is actually redundant, as only the "run" attribute is used in this example (not an Action)
+      # With the "run" attribute, we execute a single command that's native to the runners on the runner's CLI
+      # We actually only need the "uses" attribute when we want to pull in an Action
+      - name: Step one
+        uses: actions/checkout@v4
       - name: Step two
         run: "Get-ChildItem Env: | Sort-Object Name"
 
